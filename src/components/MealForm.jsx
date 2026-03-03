@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { DIETS, CUISINES } from "../utils/constants.js";
+import { DIETS, CUISINES } from "../utils/constants";
 
 const MealForm = ({ onGenerate }) => {
   const [form, setForm] = useState({
@@ -8,38 +8,46 @@ const MealForm = ({ onGenerate }) => {
     cuisine: "Any",
   });
 
+  console.log(form);
+
   const onHandleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const onHandleSubmit = (e) => {
     e.preventDefault();
     onGenerate(form);
   };
 
-  console.log(form);
   return (
-    <form action="" className="meal-form" onSubmit={handleSubmit}>
+    <form onSubmit={onHandleSubmit} className="meal-form">
       <input
         type="text"
         name="ingredients"
-        placeholder="Enter ingredients..."
+        placeholder="Ingredients"
         onChange={onHandleChange}
+        value={form.ingredients}
       />
 
-      <select name="diet" value={form.cuisine} onChange={onHandleChange} id="">
-        {CUISINES.map((c) => (
-          <option key={c}>{c} </option>
-        ))}
+      <select name="diet" onChange={onHandleChange} value={form.diet} id="">
+        {DIETS.map((c) => {
+          return <option key={c}>{c}</option>;
+        })}
       </select>
 
-      <select name="diet" value={form.diet} onChange={onHandleChange} id="">
-        {DIETS.map((c) => (
-          <option key={c}>{c} </option>
-        ))}
+      <select
+        name="cuisine"
+        value={form.cuisine}
+        onChange={onHandleChange}
+        id=""
+      >
+        {CUISINES.map((c) => {
+          return <option key={c}>{c}</option>;
+        })}
       </select>
 
-      <button type="submit">Generate Meal</button>
+      <button type="submit">Generate</button>
     </form>
   );
 };

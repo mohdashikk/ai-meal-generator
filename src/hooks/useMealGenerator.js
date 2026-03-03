@@ -4,17 +4,17 @@ import { generateMealAI } from "../services/aiService";
 export const useMealGenerator = () => {
   const [meals, setMeals] = useState(null);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
+  const [error, setError] = useState();
 
-  const generateMeal = async (FormData) => {
+  const generateMeal = async (from) => {
     try {
       setLoading(true);
       setError("");
-      const result = await generateMealAI(FormData);
+
+      const result = await generateMealAI(from);
       setMeals(result);
-      
     } catch (err) {
-      setError(err.message || "Failed to generate meales");
+      setError(err.message || "Faild to generate meals");
     } finally {
       setLoading(false);
     }
