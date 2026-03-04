@@ -1,4 +1,4 @@
-import MealCard from "../components/mealCard";
+import MealCard from "../components/MealCard";
 import MealForm from "../components/MealForm";
 import { useMealGenerator } from "../hooks/useMealGenerator";
 
