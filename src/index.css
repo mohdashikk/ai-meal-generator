@@ -34,12 +34,31 @@ body {
 
 .meal-form input,
 .meal-form select {
-  padding: 12px 14px;
+  padding: 12px 40px 12px 14px; /* extra right padding */
   border-radius: 10px;
   border: 1px solid #dcdfe6;
   font-size: 14px;
   background: white;
   transition: all 0.2s ease;
+}
+.meal-form select {
+  width: 100%;
+  padding: 12px 40px 12px 14px; /* space for arrow */
+  border-radius: 10px;
+  border: 1px solid #dcdfe6;
+  font-size: 14px;
+  background-color: white;
+
+  /* remove default browser arrow */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  /* custom arrow */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23666' viewBox='0 0 24 24'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 16px;
 }
 
 .meal-form input:focus,
